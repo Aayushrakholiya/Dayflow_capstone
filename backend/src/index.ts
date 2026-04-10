@@ -11,6 +11,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { createServer } from "http";
+import path from "path";
 dotenv.config();
 
 import createSignupRouter from "./signup";
@@ -39,6 +40,10 @@ const httpServer = createServer(app);
 
 app.use(cors());
 app.use(express.json());
+
+// ── Serve frontend static files in production ─────────────────────────────────
+const frontendPath = path.join(__dirname, "../../frontend/dist");
+app.use(express.static(frontendPath));
 
 app.get("/", (req, res) => {
   res.json({ message: "Server is running!" });
@@ -75,7 +80,20 @@ app.use("/api/google-calendar", createGoogleCalendarRouter());
 app.use("/api/microsoft-calendar", createMicrosoftCalendarRouter());
 app.use("/api/imported-events", createImportedEventsRouter());
 
-// ── 404 handler ───────────────────────────────────────────────────────────────
+// ── Serve React SPA fallback for client-side routing ──────────────────────────
+app.get("*", (req, res) => {
+  if (!req.path.startsWith("/api")) {
+    res.sendFile(path.join(frontendPath, "index.html"));
+  } else {
+    res.status(404).json({
+      message: "Route not found",
+      path: req.path,
+      method: req.method,
+    });
+  }
+});
+
+// ── 404 handler (unreachable due to above catch-all) ──────────────────────────
 app.use((req, res) => {
   res.status(404).json({
     message: "Route not found",

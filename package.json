@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev"
+  },
   "dependencies": {
     "@prisma/client": "^7.4.0",
     "googleapis": "^171.4.0",
