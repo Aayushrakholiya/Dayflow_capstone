@@ -6,6 +6,14 @@
 
 React 19 · Express 5 · Prisma · PostgreSQL · Redis · Firebase
 
+[![▶️ Demo Video](https://img.shields.io/badge/▶️_Demo_Video-Watch_on_YouTube-FF0000?style=for-the-badge&labelColor=1a1a2e)](https://youtu.be/wx2OzbUkqes)
+
+<br>
+
+[![DayFlow Demo](https://img.youtube.com/vi/wx2OzbUkqes/hqdefault.jpg)](https://youtu.be/wx2OzbUkqes)
+
+*▶️ Watch our advertisement video: [DayFlow — make your day easy!](https://youtu.be/wx2OzbUkqes)*
+
 <br>
 
 ![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
